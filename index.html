@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+
+</head>
+<body>
+    <input type="text" id="box">
+    <input type="button" value="click" onclick="func()">
+
+    <script>
+        const func = ()=>{
+            console.log("clicked");
+            let name = document.getElementById("box").value;
+            fetch('http://localhost:3000/?name='+name, {
+                method:'GET',
+            })
+            .then(function(response) {
+                return response.json();
+            })
+            .then(function(myJson) {
+                console.log(JSON.stringify(myJson));
+            });
+        }
+    </script>
+</body>
+</html>
