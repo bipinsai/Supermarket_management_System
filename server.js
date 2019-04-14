@@ -3,6 +3,8 @@ const bodyParser = require('body-parser');
 const cors = require('cors');
 var mysql = require('mysql');
 const login = require('./serverhandles/login');
+const handlehome = require('./serverhandles/handlehome');
+const md5   = require("blueimp-md5");
 
 
 
@@ -41,13 +43,10 @@ connection.connect(function(err) {
 //     res.json(req.query);
 // })
 
-// app.post('/', (req,res)=>{
-//   console.log('got it');
-//   console.log(req.body);
-//   res.json(req.body);
-// })
 
 app.post('/login',  login.handlelogin(connection))
+
+app.post('/home', handlehome.handlehome(connection))
 
 app.listen(3000, ()=>{console.log("running on 3000");})
 

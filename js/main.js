@@ -99,7 +99,10 @@
             .then((data) => {
                 console.log(JSON.stringify(data));
                 if(data.status==1){
-                    gotopage(data.userid);
+                    // var hash1 = CryptoJS.SHA1("Message");
+                    var hash = md5(data.userid);
+                    console.log(hash);
+                    gotopage(hash);
                 }
             })
             .catch((err)=>console.log(err))
