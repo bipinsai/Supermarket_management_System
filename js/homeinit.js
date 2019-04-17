@@ -40,11 +40,11 @@ fetch('http://localhost:3000/home', {
                 })
                 
                 globvar = data;
-                $('.empdetail.firstname').html('First Name: ' +"<p class='profilelabels'>"+ data.firstName+'</p>');
-                $('.empdetail.lastname').html('Last Name: ' +"<p class='profilelabels'>"+ data.lastName+'</p>');
-                $('.empdetail.phone').html('Number: ' + "<p class='profilelabels'>"+data.employeeNumber+'</p>');
-                $('.empdetail.address').html('Email: ' + "<p class='profilelabels'>"+data.email+'</p>');
-                $('.empdetail.jobtitle').html('Job Title: ' + "<p class='profilelabels'>"+data.jobTitle+'</p>');
+                $('.empdetail.firstname').html("First Name: <p class='profilevalue'>"+ data.firstName+'</p>');
+                $('.empdetail.lastname').html( "Last Name :  <p class='profilevalue'>"+ data.lastName+'</p>');
+                $('.empdetail.phone').html(    "Number    : <p class='profilevalue'>"+data.employeeNumber+'</p>');
+                $('.empdetail.address').html(  "Email     : <p class='profilevalue'>" + data.email + '</p>');
+                $('.empdetail.jobtitle').html( "Job Title : <p class='profilevalue'>"+data.jobTitle+'</p>');
 
                 $('.nav-name').html(data.firstName+" "+data.lastName);
             })

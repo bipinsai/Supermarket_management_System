@@ -7,24 +7,22 @@ html,body,h1,h2,h3,h4,h5,h6 {font-family: "Roboto", sans-serif;}
   height: inherit;
 }
 
+.nav-name{
+    color:#ededed;
+}
+.nav-name:hover{
+    color:#fff;
+}
 
 .active{
     background: #fff;
     color:#000;
 }
 
-.profilediv{
-    display: none;
-}
-.billingdiv{
-    display:block;
-}
-
 .wrapper{
     height:100vh;
-    margin-top:100px;
+    margin-top:60px;
 }
-
 
 .logoutbtn{
     float:right !important;
@@ -45,9 +43,24 @@ footer{
     width: 100%;
 }
 
+
+
+
+
+/* Billing */
+
+.billingdiv{
+    display:block;
+}    
+
+/* Profile */
+
+.profilediv{
+    display: none;
+}    
 .profile-container{
     color:black;
-    font-size: x-large;
+    font-size: 25px !important;
     font-weight: 500;
     /* width:100%; */
     border:0.2px solid #aaa;
@@ -55,30 +68,37 @@ footer{
     background-color: aliceblue;
     border-radius: 10px;
     display: grid;
-    grid-template-columns: auto auto;
-    content: none
-
+    grid-template-columns: 50% 50%;
+    content: none;
+    padding-top: 50px; 
+    padding-bottom: 50px;
 }
-
 .profile-container::after, .profile-container::before{
     content:none;
 }
-
 .profile-container .empdetail{
     /* display: inline; */
     /* width:550px; */
-    margin-left:50%;
+    display: inline;
+    font-size: 21px;
+    margin-left:45%;
     transform: translateX(-50%);
 }
 
-.profilelabels{
+.profilevalue{
     color:cornflowerblue;
-    font-size: 23px;
+    font-size: 18px;
     display: inline
 }
 
+
+
+/* Admin */
+
 .admindivisions.addempdiv{
-    text-align: center;
+    /* text-align: center; */
+    margin-left:50%;
+    transform:translateX(-50%); 
     
 }
 
