@@ -35,19 +35,23 @@
     function validate (input) {
         if($(input).attr('type') == 'email' || $(input).attr('name') == 'email') {
             if($(input).val().trim().match(/^([a-zA-Z0-9_\-\.]+)@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.)|(([a-zA-Z0-9\-]+\.)+))([a-zA-Z]{1,5}|[0-9]{1,3})(\]?)$/) == null) {
-                return true;
+                return false;
             }
         }
         else {
             if($(input).val().trim() == ''){
-                return true;
+                return false;
             }
         }
     }
 
-    function showValidate(input) {
+    function showValidate(input, msg) {
         var thisAlert = $(input).parent();
-
+        if(!msg){
+            msg = "Valid email is required: ex@abc.xyz";
+        }
+        thisAlert[0].setAttribute("data-validate", msg)
+        // console.log(thisAlert[0].getAttribute("data-validate"));
         $(thisAlert).addClass('alert-validate');
     }
 
@@ -62,31 +66,7 @@
         let username = document.querySelector(".emailinput").value;
         let password = document.querySelector(".passwordinput").value;
         if(!username || !password) return;
-        // fetch('http://localhost:3000/?name='+username, {
-        //     method:'GET',
-        // })
-        // .then(function(response) {
-        //     return response.json();
-        // })
-        // .then(function(myJson) {
-        //     console.log(JSON.stringify(myJson));
-        // });
 
-        // fetch('http://localhost:3000/', {
-        //     method:'POST',
-        //         headers: {'Content-Type': 'application/json'},
-        //         body: JSON.stringify({
-        //             name: username,
-        //             pwd: password
-        //         })
-        // })
-        // .then(function(response) {
-        //     return response.json();
-        // })
-        // .then(function(myJson) {
-        //     console.log(JSON.stringify(myJson));
-        // });
-        
         fetch('http://localhost:3000/login', {
                 method: 'post',
                 headers: {'Content-Type': 'application/json'},
@@ -99,10 +79,13 @@
             .then((data) => {
                 console.log(JSON.stringify(data));
                 if(data.status==1){
-                    // var hash1 = CryptoJS.SHA1("Message");
                     var hash = md5(data.userid);
                     console.log(hash);
                     gotopage(hash);
+                }else if(data.status==0){
+                    showValidate($('.emailinput'), data.msg);
+                }else if(data.status==2){
+                    showValidate($('.passwordinput'), data.msg);
                 }
             })
             .catch((err)=>console.log(err))

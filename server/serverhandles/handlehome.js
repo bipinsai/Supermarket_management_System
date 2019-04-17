@@ -20,25 +20,7 @@ const handlehome = (connection) => (req, res) => {
         })
         console.log(emp);
         if(emp) res.json(emp);
-        // if(result.length==0){
-        //     console.log("Email does not exist");
-        //     res.json("Email does not exist");
-        // }
-        // if(result.length>0){
-        //     // console.log(result[0].employeeNumber)
-        //     if(password==result[0].password){
-        //         console.log("Logged IN SUCCESSFULLY");
-        //         res.json({
-        //             status:1,
-        //             msg:"Logged IN SUCCESSFULLY",
-        //             userid:result[0].employeeNumber
-        //         });
-        //     }else{
-        //         console.log("Wrong Pasword");
-        //         res.json("Wrong Pasword");
-        //     }
-
-        // }
+  
     });
 }
   
