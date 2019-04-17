@@ -9,6 +9,7 @@
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 <link rel="stylesheet" type="text/css" href="css/home.css">
+<link rel="stylesheet" type="text/css" href="css/main.css">
 
 <body>
   
@@ -23,24 +24,23 @@
       <a href="#" class="w3-bar-item w3-button w3-hover-white admin-tab nav-tab">Admin</a>
       <a href="#" class="w3-bar-item w3-button w3-hover-white profile-tab nav-tab">Profile</a>
       
-      <a href="#" class="w3-bar-item w3-button  w3-hover-white logoutbtn">Logout</a>
+      <a href="#" class="w3-bar-item w3-button w3-hover-white logoutbtn">Logout</a>
       <a class="w3-bar-item w3-hide-small nav-name">Name</a>
     </div>
   </div>
   
   <!-- Sidebar-->
-  <!-- <nav class="w3-sidebar w3-bar-block w3-large w3-theme-l5 w3-animate-left" id="menubar">
+  <nav class="w3-sidebar w3-bar-block w3-large w3-theme-l5 w3-animate-left" id="menubar">
     <a href="javascript:void(0)" onclick="w3_close()" class="w3-right w3-xlarge w3-padding-large w3-hover-black w3-hide-large" title="Close Menu">
         <i class="fa fa-remove"></i>
       </a>
       <h4 class="w3-bar-item"><b>Menu</b></h4>
-      <a class="w3-bar-item w3-button w3-hover-black" href="#">Link</a>
-      <a class="w3-bar-item w3-button w3-hover-black" href="#">Link</a>
-      <a class="w3-bar-item w3-button w3-hover-black" href="#">Link</a>
-      <a class="w3-bar-item w3-button w3-hover-black" href="#">Link</a>
-    </nav> -->
+      <a class="w3-bar-item w3-button w3-hover-black manage-menu sidenav-tab" href="#">Manage</a>
+      <a class="w3-bar-item w3-button w3-hover-black addemp-menu sidenav-tab" href="#">Add Employee</a>
+      <a class="w3-bar-item w3-button w3-hover-black inventory-menu sidenav-tab" href="#">Inventory</a>
+    </nav>
     
-    <!--Overlay effect when opening sidebar on small screens -->
+    <!-- Overlay effect when opening sidebar on small screens -->
     <!-- <div class="w3-overlay w3-hide-large" onclick="w3_close()" style="cursor:pointer" title="close side menu" id="myOverlay"></div> -->
     
     <!-- Main content: shift it to the right by 250 pixels when the sidebar is visible -->
@@ -49,6 +49,50 @@
       <!-- Admin division -->
       <div class='divisions admindiv' id="Admin">
         <h1>This is the admin page</h1>
+        <div class='admindivisions managediv'>Manage</div>
+        <div class='admindivisions addempdiv'>
+          <p>Add Employee</p>
+              <div class="login100-form validate-form">
+                  <span class="login100-form-title">
+                    Hire Employee
+                  </span>
+                  
+                  <div class="wrap-input100 validate-input" data-validate = "Enter Valid Name">
+                    <input class="input100 fnameinput" type="text" name="name" placeholder="First Name">
+                    <span class="focus-input100"></span>
+                    <span class="symbol-input100"><i class="fa fa-envelope" aria-hidden="true"></i></span>
+                  </div>
+                  <div class="wrap-input100 validate-input" data-validate = "Enter Valid Name">
+                      <input class="input100 lnameinput" type="text" name="name" placeholder="Last Name">
+                      <span class="focus-input100"></span>
+                      <span class="symbol-input100"><i class="fa fa-envelope" aria-hidden="true"></i></span>
+                    </div>
+                  <div class="wrap-input100 validate-input" data-validate = "Valid email is required: ex@abc.xyz">
+                    <input class="input100 emailinput" type="text" name="email" placeholder="Email">
+                    <span class="focus-input100"></span>
+                    <span class="symbol-input100"><i class="fa fa-envelope" aria-hidden="true"></i></span>
+                  </div>
+                  <div class="wrap-input100 validate-input" data-validate = "Valid email is required: ex@abc.xyz">
+                    <input class="input100 emailinput" type="text" name="email" placeholder="Email">
+                    <span class="focus-input100"></span>
+                    <span class="symbol-input100"><i class="fa fa-envelope" aria-hidden="true"></i></span>
+                  </div>
+                  
+                  <div class="wrap-input100 validate-input" data-validate = "Password is required">
+                    <input class="input100 passwordinput" type="password" name="pass" placeholder="Password">
+                    <span class="focus-input100"></span>
+                    <span class="symbol-input100">
+                      <i class="fa fa-lock" aria-hidden="true"></i>
+                    </span>
+                  </div>
+                  
+                  <div class="container-login100-form-btn">
+                    <button class="login100-form-btn loginbtn">
+                      Login
+                    </button>
+                  </div>
+        </div>
+        <div class='admindivisions inventorydiv'>Inventory</div>
         
         <!-- Admin Division End -->
       </div>
@@ -94,34 +138,28 @@
       <script src="./js/homeinit.js"></script>
       
       <script>
-
         // Get the Sidebar
-        // var mySidebar = document.getElementById("mySidebar");
+        var mySidebar = document.getElementById("mySidebar");
         
         // Get the DIV with overlay effect
-        // var overlayBg = document.getElementById("myOverlay");
+        var overlayBg = document.getElementById("myOverlay");
         
-        // // Toggle between showing and hiding the sidebar, and add overlay effect
-        // const menubar = document.getElementById("menubar");
-
-        // function w3_open() {
-        //   if (menubar.style.display === 'block') {
-        //     menubar.style.display = 'none';
-        //     overlayBg.style.display = "none";
-        //   } else {
-        //     menubar.style.display = 'block';
-        //     overlayBg.style.display = "block";
-        //   }
-        // }
+        // Toggle between showing and hiding the sidebar, and add overlay effect
+        function w3_open() {
+          if (mySidebar.style.display === 'block') {
+            mySidebar.style.display = 'none';
+            overlayBg.style.display = "none";
+          } else {
+            mySidebar.style.display = 'block';
+            overlayBg.style.display = "block";
+          }
+        }
         
-        // // Close the sidebar with the close button
-        // function w3_close() {
-        //   menubar.style.display = "none";
-        //   overlayBg.style.display = "none";
-        // }
-
-        // w3_close();
-        // menubar.style.display="none";
+        // Close the sidebar with the close button
+        function w3_close() {
+          mySidebar.style.display = "none";
+          overlayBg.style.display = "none";
+        }
         </script>
 
 <script src="js/home.js"></script>

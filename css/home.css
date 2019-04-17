@@ -34,9 +34,10 @@ html,body,h1,h2,h3,h4,h5,h6 {font-family: "Roboto", sans-serif;}
 }
 
 footer{
-    /* clear: both; */
+    clear: both;
     /* padding: 0; */
-    /* vertical-align: middle; */
+    vertical-align: middle;
+    text-align: center;
     /* margin: 0; */
     position: fixed;
     /* height:50px; */
@@ -74,6 +75,11 @@ footer{
     color:cornflowerblue;
     font-size: 23px;
     display: inline
+}
+
+.admindivisions.addempdiv{
+    text-align: center;
+    
 }
 
 @media (min-width: 600px){

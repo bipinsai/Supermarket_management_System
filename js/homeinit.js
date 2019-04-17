@@ -18,9 +18,15 @@ fetch('http://localhost:3000/home', {
                     $('.billing-tab').css('display','none');
                     $('.billing-tab').removeClass('active');
                     $('.admin-tab').addClass('active');
+                    $('.divisions.admindiv').css('margin-left','250px')
                 }else{
                     $('.admin-tab').css('display','none');
+                    $('.w3-sidebar').css('display','none');
                 }
+
+                $('.admindivisions').css('display','none');
+                $('.sidenav-tab.manage-menu').addClass('active');
+                $('.admindivisions.managediv').css('display','block');
 
                 let arr = document.querySelectorAll('.divisions');
 
