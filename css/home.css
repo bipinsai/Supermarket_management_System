@@ -79,6 +79,7 @@ footer{
 .profile-container .empdetail{
     /* display: inline; */
     /* width:550px; */
+    color:#666;
     display: inline;
     font-size: 21px;
     margin-left:45%;
@@ -100,6 +101,23 @@ footer{
     margin-left:50%;
     transform:translateX(-50%); 
     
+}
+
+
+/* Billing Form */
+
+.productlist{
+    color:#222;
+    text-align: center;
+    font-size: larger;
+}
+
+.refresh{
+    background: url("../images/refresh.png") no-repeat;
+    background-size: 20px 20px;
+    background-position: center;
+    width:10px;
+    height: 10px;
 }
 
 @media (min-width: 600px){

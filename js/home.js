@@ -3,7 +3,7 @@ console.log("in home");
 
 (function ($) {
     "use strict";
-    
+    console.log($('.profilediv')[0]);
     $('.nav-tab').on('click',function(){
         console.log("clicked");
         $('.nav-tab').removeClass('active');
@@ -18,8 +18,8 @@ console.log("in home");
         }else if(this.innerHTML=='Profile'){
             console.log("show profile");
             $('.divisions').css('display','none');
-            $('.profilediv').css('display','block');
             $('.w3-sidebar').css('display','none');
+            $('.profilediv').css('display','block');
         }else if(this.innerHTML=='Admin'){
             console.log('show Admin');
             $('.w3-sidebar').css('display','block');
