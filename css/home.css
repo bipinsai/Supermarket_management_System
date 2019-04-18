@@ -53,6 +53,11 @@ footer{
     display:block;
 }    
 
+#total_amount{
+    text-align: center;
+    font-size: xx-large;
+}
+
 /* Profile */
 
 .profilediv{

@@ -1,7 +1,8 @@
 console.log(window.location.search.substring(1).substring(5));
 useridhash = window.location.search.substring(1).substring(5);
-let globvar = null;
-
+let curemp = null;
+let itemlist = [];
+let cart = [];
 
 
 fetch('http://localhost:3000/home', {
@@ -39,7 +40,8 @@ fetch('http://localhost:3000/home', {
                     }
                 })
                 
-                globvar = data;
+                curemp = data;
+                curemp.id = useridhash;
                 $('.empdetail.firstname').html("First Name: <p class='profilevalue'>"+ data.firstName+'</p>');
                 $('.empdetail.lastname').html( "Last Name :  <p class='profilevalue'>"+ data.lastName+'</p>');
                 $('.empdetail.phone').html(    "Number    : <p class='profilevalue'>"+data.employeeNumber+'</p>');
@@ -49,3 +51,22 @@ fetch('http://localhost:3000/home', {
                 $('.nav-name').html(data.firstName+" "+data.lastName);
             })
             .catch((err)=>console.log(err));
+
+
+
+
+fetch('http://localhost:3000/getItems')
+.then((response) => response.json())
+.then((data) => {
+    console.log(JSON.stringify(data));
+    if(data.status==1){
+        itemlist = data.productarr;
+        let list = "";
+        itemlist.map((p)=>{
+            list += `<option value='${p.pname}' title='${p.pid}'></option>`;
+        })
+
+        $('#itemdatalist').html(list);
+    }
+})
+.catch((err)=>console.log(err));            

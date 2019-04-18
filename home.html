@@ -53,7 +53,18 @@
       <!-- Admin division -->
       <div class='divisions admindiv' id="Admin">
         <h1>This is the admin page</h1>
-        <div class='admindivisions managediv'>Manage</div>
+        <div class='admindivisions managediv'>
+          <table class="employeetable">
+            <tr>
+              <th>Emp No</th>
+              <th>Name</th>
+              <th>email</th>
+              <th>Job Title</th>
+              <th>Phone Number</th>
+            </tr> 
+          </table>
+
+        </div>
         <div class='admindivisions addempdiv'>
           <!-- <p>Add Employee</p> -->
           <div class="login100-form validate-form">
@@ -116,16 +127,17 @@
                           <input type="button" name="refresh" class="refresh">
                           <table id="table">
                               <tr>
-                                <th>Product Name </th>
-                                <th>Quantity</th>
-                                <th>Price </th>
+                                &emsp;&emsp; Product Name &emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;
+                                Quantity &nbsp;&nbsp;
+                                Price &nbsp;&nbsp;
                               </tr>
-
+                              <hr style="border:1px solid">
+<!-- 
                               <tr style="visibility: hidden">
                                 <td><input type="text" /></td>
                                 <td><input type="text" /></td>
                                 <td><input type="text" /></td>
-                              </tr>
+                              </tr> -->
 
                           </table>
                           <div class="listdiv"><p class="productlist"></div>
@@ -149,7 +161,7 @@
                                       </table> -->
                                       <div class="form-input">
                                           <label for="Total Amount " >Total Amount </label>
-                                          <input type="text" name="total_amount" id="total_amount" />
+                                          <input type="text" name="total_amount" id="total_amount" readonly/>
                                       </div>
                                   </div>
                               </div>
@@ -161,8 +173,9 @@
                               <div class="form-row">
                                   <div class="form-group">
                                       <div class="form-input">
-                                          <label for="first_name" class="required">Customer Name</label>
-                                          <input type="text" name="first_name" id="first_name" />
+                                          <label for="customer_name" class="required">Customer Name</label>
+                                          <input type="text" name="first_name" id="customer_name" />
+                                          <!-- <input type="text" name="first_name" id="last_name" /> -->
                                         </div>
                                       <div class="form-input">
                                           <label for="phone_number" class="required">Phone number</label>
@@ -171,19 +184,17 @@
                                       <div class="form-input">
                                           <label for="search" class="required">Product Number</label>
                                           <input type="text" name="search" id="productnuminput" list="itemdatalist" />
-                                          <!-- <datalist id="itemdatalist">
-                                            <option  value="Internet Explorer">
-                                            <option value="Firefox">
-                                            <option value="Chrome">
-                                            <option value="Opera">
-                                            <option value="Safari">
-                                          </datalist> -->
+                                          <datalist id="itemdatalist">
+                                          </datalist>
                                       </div>
                                       <div class="form-input">
                                           <label for="quantity" class="required">Quantity</label>
                                           <input type="text" name="quantity" id="quantityinput" />
                                       </div>
-                                       <div class="form-submit">
+                                      <div class="paybtndiv form-submit" style="display:inline-block; ">
+                                        <input type="submit" value="Pay" class="pay submit" id="submit" name="submit" />
+                                    </div>
+                                       <div class="form-submit"  style="display:inline-block;">
                                           <input type="submit" value="Add To Cart" class="product submit" id="submit" name="submit" />
                                        </div>
                                       
@@ -210,9 +221,7 @@
                                       </div>
                                   </div>
                               </div>
-                              <div class="form-submit">
-                                  <input type="submit" value="Pay" class="submit" id="submit" name="submit" />
-                              </div>
+                             
                           </div>
                       </div>
                   </div>
@@ -290,5 +299,6 @@
     <script src="./booking_form/vendor/jquery-validation/dist/jquery.validate.min.js"></script>
     <script src="./booking_form/vendor/jquery-validation/dist/additional-methods.min.js"></script>
     <script src="./booking_form/js/billingform.js"></script>
+    <script src="./booking_form/js/payment.js"></script>
 </body>
 </html>

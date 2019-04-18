@@ -6,6 +6,8 @@ const login = require('./serverhandles/login');
 const handleaddemp = require('./serverhandles/handleaddemp');
 const handlehome = require('./serverhandles/handlehome');
 const searchproduct = require('./serverhandles/searchproduct');
+const getItems = require('./serverhandles/getItems');
+const handlepayment = require('./serverhandles/handlepayment');
 const md5   = require("blueimp-md5");
 
 
@@ -53,6 +55,10 @@ app.post('/home', handlehome.handlehome(connection))
 app.post('/addemp', handleaddemp.addemp(connection))
 
 app.post('/searchproduct', searchproduct.search(connection))
+
+app.get('/getItems', getItems.getItems(connection))
+
+app.post('/payment', handlepayment.pay(connection))
 
 app.listen(3000, ()=>{console.log("running on 3000");})
 
