@@ -48,11 +48,11 @@
     <!-- <div class="w3-overlay w3-hide-large" onclick="w3_close()" style="cursor:pointer" title="close side menu" id="myOverlay"></div> -->
     
     <!-- Main content: shift it to the right by 250 pixels when the sidebar is visible -->
-    <div class="w3-main" style="margin-left:100px;margin-right:100px">
+    <div class="w3-main maincontainer" style="margin-left:100px;margin-right:100px">
       
       <!-- Admin division -->
       <div class='divisions admindiv' id="Admin">
-        <h1>This is the admin page</h1>
+        <!-- <h1>This is the admin page</h1> -->
         <div class='admindivisions managediv'>
           <table class="employeetable">
             <tr>
@@ -87,6 +87,31 @@
                 <span class="focus-input100"></span>
                 <span class="symbol-input100"><i class="fa fa-envelope" aria-hidden="true"></i></span>
               </div>
+              <div class="wrap-input100 validate-input" data-validate = "Valid email is required: ex@abc.xyz">
+                <input class="input100 streetinput addressinput" type="text" name="street" placeholder="Street">
+                <span class="focus-input100"></span>
+                <span class="symbol-input100"><i class="fa fa-envelope" aria-hidden="true"></i></span>
+              </div>
+              <div class="wrap-input100 validate-input" data-validate = "Valid email is required: ex@abc.xyz">
+                <input class="input100 cityinput addressinput" type="text" name="city" placeholder="City">
+                <span class="focus-input100"></span>
+                <span class="symbol-input100"><i class="fa fa-envelope" aria-hidden="true"></i></span>
+              </div>
+              <div class="wrap-input100 validate-input" data-validate = "Valid email is required: ex@abc.xyz">
+                <input class="input100 stateinput addressinput" type="text" name="state" placeholder="State">
+                <span class="focus-input100"></span>
+                <span class="symbol-input100"><i class="fa fa-envelope" aria-hidden="true"></i></span>
+              </div>
+              <div class="wrap-input100 validate-input" data-validate = "Valid email is required: ex@abc.xyz">
+                <input class="input100 stateinput jobinput" type="text" name="jobTitle" placeholder="Job Title">
+                <span class="focus-input100"></span>
+                <span class="symbol-input100"><i class="fa fa-envelope" aria-hidden="true"></i></span>
+              </div>
+              <div class="wrap-input100 validate-input" data-validate = "Valid email is required: ex@abc.xyz">
+                <input class="input100 stateinput salaryinput" type="text" name="salary" placeholder="Salary">
+                <span class="focus-input100"></span>
+                <span class="symbol-input100"><i class="fa fa-envelope" aria-hidden="true"></i></span>
+              </div>
               <div class="wrap-input100 validate-input" data-validate = "Enter Valid Mobile number">
                 <input class="input100 phnoinput" type="text" name="number" placeholder="Phone Number">
                 <span class="focus-input100"></span>
@@ -109,14 +134,18 @@
           </div>
         </div>
         <!-- Inventory div -->
-        <div class='admindivisions inventorydiv'>Inventory</div>
+        <div class='admindivisions inventorydiv'>
+          <table class='inventorytable' value="asdas">
+
+          </table>
+        </div>
         
         <!-- Admin Division End -->
       </div>
 
       <!-- Billing division -->
         <div class='divisions billingdiv main' id="Billing">
-          <h1>This is the Billing page</h1>
+          <!-- <h1>This is the Billing page</h1> -->
           
 
           <!-- <div class="main"> -->
@@ -182,7 +211,7 @@
                                           <input type="text" name="phone_number" id="phone_number" />
                                       </div>
                                       <div class="form-input">
-                                          <label for="search" class="required">Product Number</label>
+                                          <label for="search" class="required">Product Name</label>
                                           <input type="text" name="search" id="productnuminput" list="itemdatalist" />
                                           <datalist id="itemdatalist">
                                           </datalist>
@@ -199,7 +228,7 @@
                                        </div>
                                       
                                   </div>
-                                  <div class="form-group">
+                                  <!-- <div class="form-group">
                                       <div class="form-radio">
                                           <div class="label-flex">
                                               <label for="payment">Payment Mode</label>
@@ -219,7 +248,7 @@
                                               </div>
                                           </div>
                                       </div>
-                                  </div>
+                                  </div> -->
                               </div>
                              
                           </div>
@@ -254,7 +283,7 @@
     
     <footer id="myFooter">
       <div class="w3-container w3-theme-l2">
-        <h4>Footer</h4>
+        <h4 class="footertext">Footer</h4>
       </div>
       
     </footer>
@@ -263,6 +292,7 @@
 
 
       <script src="vendor/jquery/jquery-3.2.1.min.js"></script>
+
       <script src="./js/homeinit.js"></script>
       
       <script>
@@ -292,13 +322,15 @@
 
 <script src="js/home.js"></script>
 <script src="js/addemp.js"></script>
+<script src="js/manage.js"></script>
+
 
 <script src="./booking_form/vendor/jquery/jquery.min.js"></script>
-    <script src="./booking_form/vendor/nouislider/nouislider.min.js"></script>
-    <script src="./booking_form/vendor/wnumb/wNumb.js"></script>
-    <script src="./booking_form/vendor/jquery-validation/dist/jquery.validate.min.js"></script>
-    <script src="./booking_form/vendor/jquery-validation/dist/additional-methods.min.js"></script>
-    <script src="./booking_form/js/billingform.js"></script>
-    <script src="./booking_form/js/payment.js"></script>
+<script src="./booking_form/vendor/nouislider/nouislider.min.js"></script>
+<script src="./booking_form/vendor/wnumb/wNumb.js"></script>
+<script src="./booking_form/vendor/jquery-validation/dist/jquery.validate.min.js"></script>
+<script src="./booking_form/vendor/jquery-validation/dist/additional-methods.min.js"></script>
+<script src="./booking_form/js/billingform.js"></script>
+<script src="./booking_form/js/payment.js"></script>
 </body>
 </html>

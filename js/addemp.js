@@ -1,3 +1,4 @@
+// import { emitKeypressEvents } from "readline";
 
 (function ($) {
     "use strict";
@@ -84,8 +85,13 @@
         let phno = $(".phnoinput").val();
         let fname = $(".fnameinput").val();
         let lname = $(".lnameinput").val();
+        let city = $(".cityinput").val();
+        let state = $(".stateinput").val();
+        let street = $(".streetinput").val();
+        let salary = $(".salaryinput").val();
+        let jobtitle = $(".jobinput").val();
         
-        if(!email || !password) return;
+        if(!email || !password || !phno || !fname || !lname || !salary || !jobtitle || !street || !city) return;
 
         fetch('http://localhost:3000/addemp', {
                 method: 'post',
@@ -95,7 +101,13 @@
                     'password': password,
                     'phno': phno,
                     'fname':fname,
-                    'lname':lname
+                    'lname':lname,
+                    'street':street,
+                    'city':city,
+                    'state':state,
+                    'salary':salary,
+                    'jobtitle':jobtitle,
+                    'branchid':curemp.BRANCH_ID
                 })
             })
             .then((response) => response.json())
@@ -103,6 +115,7 @@
                 console.log(JSON.stringify(data));
                 if(data.status==1){
                     alert("Successfully add new Employee");
+                    $('.validate-input .input100').val("");
                 }else if(data.status==0){
                     showValidate($('.emailinput'),"Email already exists");
                 }

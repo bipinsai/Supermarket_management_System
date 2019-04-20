@@ -9,6 +9,7 @@ console.log("in home");
         $('.nav-tab').removeClass('active');
         $(this).addClass('active');
 
+        console.log("HEREHEREHEREHEREHERE");
         
         console.log(this.innerHTML);
         if(this.innerHTML=='Billing'){

@@ -1,8 +1,8 @@
 const getItems = (connection) => (req, res) => {
-
+    let bid = req.body.branchid;
     console.log("handling getItems");
 
-    connection.query("SELECT * FROM testproduct", function (err, result, fields) {
+    connection.query(`SELECT * FROM PRODUCT WHERE BRANCH_ID=${bid}`, function (err, result, fields) {
         if (err) throw err;
         console.log(result);
 

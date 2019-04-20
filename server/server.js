@@ -8,6 +8,8 @@ const handlehome = require('./serverhandles/handlehome');
 const searchproduct = require('./serverhandles/searchproduct');
 const getItems = require('./serverhandles/getItems');
 const handlepayment = require('./serverhandles/handlepayment');
+const handlegetemp = require('./serverhandles/handlegetemp');
+const handlermemp = require('./serverhandles/handlermemp');
 const md5   = require("blueimp-md5");
 
 
@@ -22,7 +24,7 @@ var connection = mysql.createConnection({
   port  : 3306,
   user     : 'root',
   password : 'Rohith@2003',
-  database : 'classicmodels',
+  database : 'SuperMarket',
   insecureAuth : true
 });
 
@@ -56,7 +58,11 @@ app.post('/addemp', handleaddemp.addemp(connection))
 
 app.post('/searchproduct', searchproduct.search(connection))
 
-app.get('/getItems', getItems.getItems(connection))
+app.post('/getItems', getItems.getItems(connection))
+
+app.post('/getemp', handlegetemp.getemp(connection))
+
+app.post('/rmemp', handlermemp.rmemp(connection))
 
 app.post('/payment', handlepayment.pay(connection))
 

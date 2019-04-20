@@ -211,7 +211,7 @@ h2 {
   position: relative;
   border:2px solid #999;
   width: 385px;
-  margin-bottom: -8px; }
+  }
 
 .signup-form {
   width: 1015px;
@@ -219,7 +219,7 @@ h2 {
 
 .signup-img-content {
   position: absolute;
-  top: 74%;
+  top: 85%;
   left: 50%;
   transform: translate(-50%, -50%);
   -moz-transform: translate(-50%, -50%);

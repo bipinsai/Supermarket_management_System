@@ -1,7 +1,6 @@
 (function($) {
     // var input = $('.signup-form .input100');
 
-    
     console.log(cart);
     
     $('.pay.submit').on('click',function(){
@@ -73,21 +72,28 @@
                     'customer_name': name,
                     'phno':phno,
                     'cart':cart,
-                    'empid': curemp.employeeNumber
+                    'empid': curemp.EMP_ID
                 })
             })
             .then((response) => response.json())
             .then((data) => {
-                // if(data.status==1){
+                if(data.status==1){
                     console.log(JSON.stringify(data));
-                    // cart.push(data.productobj);
-                    // showCart();
-                // }else{
-                    // console.log(data.msg);
-                // }
-                // console.log(cart);
+                    alert("TRANSACTION SUCCESSFUL!");
+                    cart = [];
+                    $('.productlist').html("");
+                    $('#total_amount').val("");
+                    $('#customer_name').val("");
+                    $('#phone_number').val("");
+
+                }else{
+                    console.log(data.msg);
+                    alert("TRANSACTION FAILED!");
+                }
             })
             .catch((err)=>console.log(err))
     }
+
+
 
 })(jQuery);
