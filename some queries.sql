@@ -6,6 +6,7 @@ select *from product;
 select *from CUSTOMER;
 select *from bill;
 select *from `transaction`;
+select *from trigger_log;
 
 SELECT * FROM EMPLOYEE where email='rakesh@gmail.com';
 
@@ -27,7 +28,6 @@ EXISTS (SELECT * FROM EMPLOYEE AS E WHERE E.EMP_ID=B.EMP_ID AND E.BRANCH_ID=2);
 SELECT BRANCH_NAME FROM EMPLOYEE,BRANCH WHERE EMPLOYEE.BRANCH_ID=BRANCH.BRANCH_ID AND EMPLOYEE.EMP_ID=2;
 
 
-insert into customer(CUstomer_name,ph_no) values('helo','123123123');
 
 create table trigger_log(id int(10) auto_increment primary key, trigger_type varchar(20), tablename varchar(20));
 
@@ -85,10 +85,12 @@ create  procedure gensales(IN SALESDATE DATE)
 
 begin
 	declare	tamount INT;
-	 SELECT DER.TID,DER.PID,DER.PRODUCT_NAME,DER.Q AS QUANTITY_SALED,DER.PR AS AMOUNT FROM (SELECT T.TID AS TID,T.PID,P.PRODUCT_NAME,SUM(T.QUANTITY) AS Q,p.price*sum(t.quantity) AS PR 
+	 select 'SALES OF EACH PRODUCT';
+     SELECT DER.TID,DER.PID,DER.PRODUCT_NAME,DER.Q AS QUANTITY_SALED,DER.PR AS AMOUNT FROM (SELECT T.TID AS TID,T.PID,P.PRODUCT_NAME,SUM(T.QUANTITY) AS Q,p.price*sum(t.quantity) AS PR 
      FROM `transaction` AS T,PRODUCT AS P WHERE T.PID=P.PRODUCT_ID GROUP BY T.PID) AS DER, BILL AS B WHERE B.TID=DER.TID 
      AND DATE(DATETIME)=SALESDATE;
      
+     select 'SALES BY EACH EMPLOYEE';
      SELECT E.EMP_ID,FIRST_NAME,LAST_NAME,SUM(AMOUNT) AS SALES FROM EMPLOYEE AS E,BILL AS B WHERE E.EMP_ID=B.EMP_ID group by E.EMP_ID;
      
      SELECT SUM(AMOUNT) INTO tamount FROM BILL;

@@ -153,28 +153,35 @@ ALTER TABLE PRODUCT ADD CONSTRAINT FK_BRANCH_ID_PR FOREIGN KEY(`BRANCH_ID`) REFE
 drop procedure if exists gensales;
 delimiter //
 create  procedure gensales(IN SALESDATE DATE)
-
 begin
 	declare	tamount INT;
-	 SELECT DER.TID,DER.PID,DER.PRODUCT_NAME,DER.Q AS QUANTITY_SALED,DER.PR AS AMOUNT FROM (SELECT T.TID AS TID,T.PID,P.PRODUCT_NAME,SUM(T.QUANTITY) AS Q,p.price*sum(t.quantity) AS PR 
-     FROM `transaction` AS T,PRODUCT AS P WHERE T.PID=P.PRODUCT_ID GROUP BY T.PID) AS DER, BILL AS B WHERE B.TID=DER.TID 
-     AND DATE(DATETIME)=SALESDATE;
+	select 'SALES OF EACH PRODUCT' AS '';
+	SELECT DER.TID,DER.PID,DER.PRODUCT_NAME,DER.Q AS QUANTITY_SOLD,DER.PR AS AMOUNT FROM (SELECT T.TID AS TID,T.PID,P.PRODUCT_NAME,SUM(T.QUANTITY) AS Q,p.price*sum(t.quantity) AS PR 
+	FROM `transaction` AS T,PRODUCT AS P WHERE T.PID=P.PRODUCT_ID GROUP BY T.PID) AS DER, BILL AS B WHERE B.TID=DER.TID 
+	AND DATE(DATETIME)=SALESDATE;
+	
+    select 'SALES BY EACH EMPLOYEE' AS '';
+	SELECT E.EMP_ID,FIRST_NAME,LAST_NAME,SUM(AMOUNT) AS SALES FROM EMPLOYEE AS E,BILL AS B WHERE E.EMP_ID=B.EMP_ID group by E.EMP_ID;
      
-     SELECT E.EMP_ID,FIRST_NAME,LAST_NAME,SUM(AMOUNT) AS SALES FROM EMPLOYEE AS E,BILL AS B WHERE E.EMP_ID=B.EMP_ID group by E.EMP_ID;
+	SELECT SUM(AMOUNT) INTO tamount FROM BILL;
      
-     SELECT SUM(AMOUNT) INTO tamount FROM BILL;
-     
-     SELECT 'total revenue for the day =' as '',tamount as '';
+	SELECT 'total revenue for the day =' as '',tamount as '';
 end//
 delimiter ;
 
-create table trigger_log(id int(10) auto_increment primary key, trigger_type varchar(20), tablename varchar(20));
+drop table if exists trigger_log;
+create table trigger_log(
+		id int(10) auto_increment primary key,
+        trigger_type varchar(20),
+        tablename varchar(20),
+        timedate timestamp  DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
+        );
 
 SELECT *FROM TRIGGER_LOG;
 
 drop trigger if exists addcus;
 delimiter //
-create trigger addcus before insert on customer
+create trigger addcus after insert on customer
 for each row
 begin
 	insert into trigger_log(trigger_type,tablename) values('insert','customer');
@@ -183,10 +190,19 @@ delimiter ;
 
 drop trigger if exists addbill;
 delimiter //
-create trigger addbill before insert on bill
+create trigger addbill after insert on bill
 for each row
 begin
 	insert into trigger_log(trigger_type,tablename) values('insert','bill');
+end;//
+delimiter ;
+
+drop trigger if exists rmemp;
+delimiter //
+create trigger rmemp after delete on employee
+for each row
+begin
+	insert into trigger_log(trigger_type,tablename) values('delete','employee');
 end;//
 delimiter ;
 
