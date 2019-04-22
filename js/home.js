@@ -40,13 +40,17 @@ console.log("in home");
             $('.admindivisions').css('display','none');
             $('.managediv').css('display','block');
         }else if(this.innerHTML=='Add Employee'){
-            console.log("show profile");
+            console.log("show Add Emp");
             $('.admindivisions').css('display','none');
             $('.addempdiv').css('display','block');
         }else if(this.innerHTML=='Inventory'){
-            console.log('show Admin');
+            console.log('show Inventory');
             $('.admindivisions').css('display','none');
             $('.inventorydiv').css('display','block');
+        }else if(this.innerHTML=='Sales'){
+            console.log('show Sales');
+            $('.admindivisions').css('display','none');
+            $('.salesdiv').css('display','block');
         }
     });
 

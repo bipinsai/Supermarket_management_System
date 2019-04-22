@@ -62,6 +62,7 @@
         console.log("clicked");
         let name = document.querySelector("#customer_name").value;
         let phno = $('#phone_number').val();
+        let price = parseInt($('#total_amount').val().slice(1));
         if(!name || !phno) return;
         
 
@@ -72,6 +73,7 @@
                     'customer_name': name,
                     'phno':phno,
                     'cart':cart,
+                    'amount': price,
                     'empid': curemp.EMP_ID
                 })
             })

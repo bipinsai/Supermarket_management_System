@@ -109,8 +109,25 @@ footer{
     display:inline;
 }
 
+.rmbtn{
+    background-color: #ddd;
+}
+.rmbtn:hover{
+    background-color: crimson;
+    color:#fff;
+    cursor: pointer;
+}
+.emplistlabel{
+    color: #222;
+    font-size:20px;
+}
+
 
 /* Billing Form */
+
+.billingdiv{
+    padding-left:200px;
+}
 
 .productlist{
     color:#222;

@@ -114,7 +114,7 @@
             .then((data) => {
                 console.log(JSON.stringify(data));
                 if(data.status==1){
-                    alert("Successfully add new Employee");
+                    alert("Successfully added a new Employee");
                     $('.validate-input .input100').val("");
                 }else if(data.status==0){
                     showValidate($('.emailinput'),"Email already exists");

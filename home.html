@@ -35,13 +35,14 @@
   
   <!-- Sidebar-->
     <nav class="w3-sidebar w3-bar-block w3-large w3-theme-l5 w3-animate-left" id="menubar">
-    <a href="javascript:void(0)" onclick="w3_close()" class="w3-right w3-xlarge w3-padding-large w3-hover-black w3-hide-large" title="Close Menu">
-        <i class="fa fa-remove"></i>
-      </a>
+    <!-- <a href="javascript:void(0)" onclick="w3_close()" class="w3-right w3-xlarge w3-padding-large w3-hover-black w3-hide-large" title="Close Menu"> -->
+        <!-- <i class="fa fa-remove"></i> -->
+      <!-- </a> -->
       <h4 class="w3-bar-item"><b>Menu</b></h4>
       <a class="w3-bar-item w3-button w3-hover-black manage-menu sidenav-tab" href="#">Manage</a>
       <a class="w3-bar-item w3-button w3-hover-black addemp-menu sidenav-tab" href="#">Add Employee</a>
       <a class="w3-bar-item w3-button w3-hover-black inventory-menu sidenav-tab" href="#">Inventory</a>
+      <a class="w3-bar-item w3-button w3-hover-black sales-menu sidenav-tab" href="#">Sales</a>
     </nav>
     
     <!-- Overlay effect when opening sidebar on small screens -->
@@ -54,6 +55,7 @@
       <div class='divisions admindiv' id="Admin">
         <!-- <h1>This is the admin page</h1> -->
         <div class='admindivisions managediv'>
+          <p class="emplistlabel">Employees at </p>
           <table class="employeetable">
             <tr>
               <th>Emp No</th>
@@ -139,6 +141,11 @@
 
           </table>
         </div>
+        <div class='admindivisions salesdiv'>
+          <table class='salestable' value="asdas">
+
+          </table>
+        </div>
         
         <!-- Admin Division End -->
       </div>
@@ -171,7 +178,7 @@
                           </table>
                           <div class="listdiv"><p class="productlist"></div>
                           <div class="signup-img-content">
-                              <h2> Table Goes Here </h2>
+                              <!-- <h2> Table Goes Here </h2> -->
                               <div>
                                   <div>
                                       <!-- <table id="table">
@@ -287,12 +294,13 @@
       </div>
       
     </footer>
-        
-    </div>
-
-
-      <script src="vendor/jquery/jquery-3.2.1.min.js"></script>
-
+    
+  </div>
+  
+  
+  <script src="vendor/jquery/jquery-3.2.1.min.js"></script>
+  
+    <script src="js/sales.js"></script>
       <script src="./js/homeinit.js"></script>
       
       <script>
@@ -322,7 +330,6 @@
 
 <script src="js/home.js"></script>
 <script src="js/addemp.js"></script>
-<script src="js/manage.js"></script>
 
 
 <script src="./booking_form/vendor/jquery/jquery.min.js"></script>

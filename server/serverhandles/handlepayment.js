@@ -3,6 +3,7 @@ const pay = (connection) => (req, res) => {
     empid = req.body.empid;
     cart = req.body.cart;
     phno = req.body.phno;
+    tot_amount = req.body.amount;
     console.log("handling payment");
     let tid = 1;
     let n = cart.length;
@@ -21,19 +22,26 @@ const pay = (connection) => (req, res) => {
 
             if(result2.length>0){
                 let cus_id = result2[0].CUSTOMER_ID;
-                connection.query(`INSERT INTO BILL(TID,EMP_ID,CUSTOMER_ID,PH_NO) VALUES(${tid},${empid},'${cus_id}','${phno}')`, function (err3, result3, fields3) {
+                connection.query(`INSERT INTO BILL(TID,EMP_ID,CUSTOMER_ID,AMOUNT) VALUES(${tid},${empid},'${cus_id}',${tot_amount})`, function (err3, result3, fields3) {
                     if (err3) throw err3;
                     console.log(result3);
                 });
             }else{
                 connection.query(`INSERT INTO CUSTOMER(CUSTOMER_NAME,PH_NO) VALUES('${cus_name}','${phno}')`, function (err3, result3, fields3) {
                     if (err3) throw err3;
-                    let cus_id = result3[0].CUSTOMER_ID;
-                    console.log(result3);
-                    connection.query(`INSERT INTO BILL(TID,EMP_ID,CUSTOMER_ID,PH_NO) VALUES(${tid},${empid},'${cus_id}','${phno}')`, function (err4, result4, fields4) {
-                        if (err4) throw err4;
-                        console.log(result4);
-                    });
+                    
+                    connection.query(`SELECT CUSTOMER_ID FROM CUSTOMER WHERE CUSTOMER_NAME='${cus_name}' AND PH_NO='${phno}'`, function (err5, result5, fields5) {
+                        if (err5) throw err5;
+                        if(result5){
+                            let cus_id = result5[0].CUSTOMER_ID;
+                            connection.query(`INSERT INTO BILL(TID,EMP_ID,CUSTOMER_ID,AMOUNT) VALUES(${tid},${empid},'${cus_id}',${tot_amount})`, function (err4, result4, fields4) {
+                                if (err4) throw err4;
+                                console.log(result4);
+                            });
+                        }
+                        
+                    })
+                    // console.log(result3);
                 });
                 console.log();
             }

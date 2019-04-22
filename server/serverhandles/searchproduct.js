@@ -7,7 +7,7 @@ const search = (connection) => (req, res) => {
 
     console.log("handling search");
 
-    connection.query("SELECT * FROM testproduct where pid='"+pid +"'", function (err, result, fields) {
+    connection.query("SELECT * FROM PRODUCT where PRODUCT_ID='"+pid +"'", function (err, result, fields) {
         if (err) throw err;
         console.log(result)
 

@@ -10,6 +10,7 @@ const getItems = require('./serverhandles/getItems');
 const handlepayment = require('./serverhandles/handlepayment');
 const handlegetemp = require('./serverhandles/handlegetemp');
 const handlermemp = require('./serverhandles/handlermemp');
+const handlesales = require('./serverhandles/handlesales');
 const md5   = require("blueimp-md5");
 
 
@@ -35,20 +36,6 @@ connection.connect(function(err) {
   console.log("Database connected");
 
 
-  // connection.query("SELECT * FROM testemp", function (err, result, fields) {
-  //   // if (err) throw err;
-  //   console.log(result);
-  // });
-  
-
-
-
-// app.get('/', (req,res)=>{
-//     console.log('got it');
-//     console.log(req.query);
-//     res.json(req.query);
-// })
-
 
 app.post('/login',  login.handlelogin(connection))
 
@@ -65,6 +52,8 @@ app.post('/getemp', handlegetemp.getemp(connection))
 app.post('/rmemp', handlermemp.rmemp(connection))
 
 app.post('/payment', handlepayment.pay(connection))
+
+app.post('/getSales', handlesales.getSales(connection))
 
 app.listen(3000, ()=>{console.log("running on 3000");})
 
