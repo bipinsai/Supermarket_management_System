@@ -186,6 +186,7 @@ fetch('http://localhost:3000/rmemp', {
         console.log(JSON.stringify(data));
         if(data.status==1){
             console.log(data.msg);
+            getempfunc();
             
         }else{
             console.log(data.msg);

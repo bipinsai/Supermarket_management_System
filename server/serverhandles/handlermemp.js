@@ -12,8 +12,9 @@ const rmemp = (connection) => (req, res) => {
             connection.query(`SET foreign_key_checks = 1`, function (err2, result2, fields) {
                 if (err2) throw err2;
             });
-
-            if(result1.length>0){
+            console.log(result1.affectedRows);
+            
+            if(result1.affectedRows>0){
                 res.json({
                     'status':1,
                     'msg':'Employee successfully removed'
