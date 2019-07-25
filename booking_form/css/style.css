@@ -198,15 +198,6 @@ h2 {
 .clear {
   clear: both; }
 
-body {
-  font-size: 14px;
-  line-height: 1.8;
-  color: #222;
-  font-weight: 500;
-  font-family: 'Poppins';
-  margin: 0px;
-  background: #282828;
-  padding: 50px 0; }
 
 .main {
   position: relative; }
@@ -218,8 +209,9 @@ body {
 
 .signup-img {
   position: relative;
+  border:2px solid #999;
   width: 385px;
-  margin-bottom: -8px; }
+  }
 
 .signup-form {
   width: 1015px;
@@ -227,7 +219,7 @@ body {
 
 .signup-img-content {
   position: absolute;
-  top: 80%;
+  top: 85%;
   left: 50%;
   transform: translate(-50%, -50%);
   -moz-transform: translate(-50%, -50%);

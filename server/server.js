@@ -3,7 +3,14 @@ const bodyParser = require('body-parser');
 const cors = require('cors');
 var mysql = require('mysql');
 const login = require('./serverhandles/login');
+const handleaddemp = require('./serverhandles/handleaddemp');
 const handlehome = require('./serverhandles/handlehome');
+const searchproduct = require('./serverhandles/searchproduct');
+const getItems = require('./serverhandles/getItems');
+const handlepayment = require('./serverhandles/handlepayment');
+const handlegetemp = require('./serverhandles/handlegetemp');
+const handlermemp = require('./serverhandles/handlermemp');
+const handlesales = require('./serverhandles/handlesales');
 const md5   = require("blueimp-md5");
 
 
@@ -18,7 +25,7 @@ var connection = mysql.createConnection({
   port  : 3306,
   user     : 'root',
   password : 'Rohith@2003',
-  database : 'classicmodels',
+  database : 'SuperMarket',
   insecureAuth : true
 });
 
@@ -29,24 +36,24 @@ connection.connect(function(err) {
   console.log("Database connected");
 
 
-  // connection.query("SELECT * FROM testemp", function (err, result, fields) {
-  //   // if (err) throw err;
-  //   console.log(result);
-  // });
-  
-
-
-
-// app.get('/', (req,res)=>{
-//     console.log('got it');
-//     console.log(req.query);
-//     res.json(req.query);
-// })
-
 
 app.post('/login',  login.handlelogin(connection))
 
 app.post('/home', handlehome.handlehome(connection))
+
+app.post('/addemp', handleaddemp.addemp(connection))
+
+app.post('/searchproduct', searchproduct.search(connection))
+
+app.post('/getItems', getItems.getItems(connection))
+
+app.post('/getemp', handlegetemp.getemp(connection))
+
+app.post('/rmemp', handlermemp.rmemp(connection))
+
+app.post('/payment', handlepayment.pay(connection))
+
+app.post('/getSales', handlesales.getSales(connection))
 
 app.listen(3000, ()=>{console.log("running on 3000");})
 

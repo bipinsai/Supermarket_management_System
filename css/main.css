@@ -195,6 +195,9 @@ iframe {
 [  ]*/
 .login100-pic {
   width: 316px;
+  height:280px;
+
+  /* padding-top:50px; */
 }
 
 .login100-pic img {

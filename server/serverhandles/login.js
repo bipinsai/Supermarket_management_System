@@ -2,16 +2,15 @@ const handlelogin = (connection) => (req, res) => {
     console.log(req.body);
     let email = req.body.name;
     let password = req.body.pwd;
-    // if (!email || !password) {
-    //   return res.status(400).json('incorrect form submission');
-    // }
+    if (!email || !password) {
+      return res.status(400).json('incorrect form submission');
+    }
 
     console.log("handling login");
 
-    connection.query("SELECT * FROM testemp where email='"+email +"'", function (err, result, fields) {
+    connection.query("SELECT * FROM EMPLOYEE where email='"+email +"'", function (err, result, fields) {
         if (err) throw err;
         // console.log(result);
-        // result.map((row)=>console.log(row));
         console.log(result)
 
         if(result.length==0){
@@ -21,16 +20,14 @@ const handlelogin = (connection) => (req, res) => {
                 msg:"Email does not exist",
                 userid:null
             });
-            // res.json("Email does not exist");
         }
         if(result.length>0){
-            // console.log(result[0].employeeNumber)
-            if(password==result[0].password){
+            if(password==result[0].PASSWORD){
                 console.log("Logged IN SUCCESSFULLY");
                 res.json({
                     status:1,
                     msg:"Logged IN SUCCESSFULLY",
-                    userid:result[0].employeeNumber
+                    userid:result[0].EMP_ID
                 });
             }else{
                 console.log("Wrong Pasword");
@@ -39,7 +36,6 @@ const handlelogin = (connection) => (req, res) => {
                     msg:"Wrong Pasword",
                     userid:null
                 });
-                // res.json("Wrong Pasword");
             }
 
         }

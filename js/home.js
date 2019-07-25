@@ -3,12 +3,13 @@ console.log("in home");
 
 (function ($) {
     "use strict";
-    
+    console.log($('.profilediv')[0]);
     $('.nav-tab').on('click',function(){
         console.log("clicked");
         $('.nav-tab').removeClass('active');
         $(this).addClass('active');
 
+        console.log("HEREHEREHEREHEREHERE");
         
         console.log(this.innerHTML);
         if(this.innerHTML=='Billing'){
@@ -18,8 +19,8 @@ console.log("in home");
         }else if(this.innerHTML=='Profile'){
             console.log("show profile");
             $('.divisions').css('display','none');
-            $('.profilediv').css('display','block');
             $('.w3-sidebar').css('display','none');
+            $('.profilediv').css('display','block');
         }else if(this.innerHTML=='Admin'){
             console.log('show Admin');
             $('.w3-sidebar').css('display','block');
@@ -39,13 +40,17 @@ console.log("in home");
             $('.admindivisions').css('display','none');
             $('.managediv').css('display','block');
         }else if(this.innerHTML=='Add Employee'){
-            console.log("show profile");
+            console.log("show Add Emp");
             $('.admindivisions').css('display','none');
             $('.addempdiv').css('display','block');
         }else if(this.innerHTML=='Inventory'){
-            console.log('show Admin');
+            console.log('show Inventory');
             $('.admindivisions').css('display','none');
             $('.inventorydiv').css('display','block');
+        }else if(this.innerHTML=='Sales'){
+            console.log('show Sales');
+            $('.admindivisions').css('display','none');
+            $('.salesdiv').css('display','block');
         }
     });
 

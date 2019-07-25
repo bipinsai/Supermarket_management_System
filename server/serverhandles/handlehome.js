@@ -6,20 +6,28 @@ const handlehome = (connection) => (req, res) => {
 
     console.log("handling home");
 
-    connection.query("SELECT * FROM testemp", function (err, result, fields) {
-        if (err) throw err;
-        
-        // console.log(result);
-
+    connection.query("SELECT * FROM EMPLOYEE", function (err, result, fields) {
+        if (err) throw err;        
         let emp = null;
         result.map((row)=>{
-            if(md5(row.employeeNumber)==useridhash){
-                // console.log(row.employeeNumber + "   " + useridhash);                
+            if(md5(row.EMP_ID)==useridhash){
                 emp = row;
             }
         })
-        console.log(emp);
-        if(emp) res.json(emp);
+        connection.query(`SELECT BRANCH_NAME FROM EMPLOYEE,BRANCH WHERE EMPLOYEE.BRANCH_ID=BRANCH.BRANCH_ID AND EMPLOYEE.EMP_ID=${emp.EMP_ID}`, function (err1, result1, fields) {
+            if (err1) throw err1;        
+            if(result1){
+                console.log(result1[0]);
+                
+                emp.BRANCH_NAME = result1[0].BRANCH_NAME;
+                console.log(emp);
+                if(emp) res.json(emp);
+            }else{
+                
+                if(emp) res.json(emp);
+            }
+        });
+        
   
     });
 }
